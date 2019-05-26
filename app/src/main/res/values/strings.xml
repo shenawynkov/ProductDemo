@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ProductsDemo</string>
+    <string name="retry">Retry</string>
+    <string name="product_error">An error occurred while loading the Products</string>
+</resources>
