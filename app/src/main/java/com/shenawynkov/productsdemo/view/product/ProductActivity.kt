@@ -28,19 +28,25 @@ class ProductActivity : AppCompatActivity(), ProductListener {
     }
 
     private fun init() {
+        //  recycler
         recyclerView = findViewById(R.id.rv_product_list)
         recyclerView.layoutManager = LinearLayoutManager(this)
         viewAdapter = ProductsAdapter(listOf(), this, this)
         recyclerView.adapter = viewAdapter
+        //viewmodel
         viewModel = ViewModelProviders.of(
             this,
             ViewModelFactory(this.getApplication())
         ).get(ProductsViewModel::class.java)
+
+
         viewModel.list.observe(this, Observer {
 
             viewAdapter.list = it
             viewAdapter.notifyDataSetChanged()
         })
+
+
         viewModel.loading.observe(this, Observer {
             progressBar.visibility = it
         })
