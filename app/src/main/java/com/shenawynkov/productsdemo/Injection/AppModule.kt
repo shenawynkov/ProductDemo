@@ -1,8 +1,6 @@
 package com.shenawynkov.productsdemo.Injection
 
 import android.app.Application
-import android.provider.SyncStateContract
-import androidx.room.Database
 import androidx.room.Room
 import com.shenawynkov.productsdemo.model.Repository
 import com.shenawynkov.productsdemo.model.db.AppDb
@@ -12,9 +10,9 @@ import dagger.Module
 import dagger.Provides
 import dagger.Reusable
 import javax.inject.Singleton
+
 @Module
-class AppModule(private val application: Application)
-{
+class AppModule(private val application: Application) {
 
 
     @Provides
@@ -23,18 +21,18 @@ class AppModule(private val application: Application)
 
     @Provides
     @Singleton
-    fun provideAppDatabase(app: Application): AppDb = Room.databaseBuilder(app,
-        AppDb::class.java, db).build()
-
+    fun provideAppDatabase(app: Application): AppDb = Room.databaseBuilder(
+        app,
+        AppDb::class.java, db
+    ).build()
 
 
     @Provides
     @Reusable
 
     fun provideProductDao(
-        database: AppDb): ProductDao=database.products()
-
-
+        database: AppDb
+    ): ProductDao = database.products()
 
 
     @Provides

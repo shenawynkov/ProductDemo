@@ -1,15 +1,13 @@
 package com.shenawynkov.productsdemo.utils
 
 import androidx.room.TypeConverter
-import com.google.gson.reflect.TypeToken
-import java.util.Collections.emptyList
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.shenawynkov.productsdemo.model.product.Products
 import java.util.*
 
 
 class Convertor {
-
 
 
     companion object {

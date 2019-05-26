@@ -7,7 +7,7 @@ import androidx.room.Query
 import com.shenawynkov.productsdemo.model.product.Products
 
 @Dao
-interface ProductDao{
+interface ProductDao {
 
 
     @Query("SELECT * FROM products")
@@ -15,6 +15,7 @@ interface ProductDao{
 
     @Insert
     fun insertAll(vararg products: Products)
+
     @Query("DELETE FROM products")
     fun deleteAll()
 }

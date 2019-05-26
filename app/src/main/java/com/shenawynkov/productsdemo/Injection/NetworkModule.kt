@@ -1,11 +1,9 @@
 package com.shenawynkov.productsdemo.Injection
 
-import com.google.gson.Gson
 import com.shenawynkov.productsdemo.network.ProductApi
 import com.shenawynkov.productsdemo.utils.BASE_URL
 import dagger.Module
 import dagger.Provides
-import dagger.Reusable
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -14,7 +12,7 @@ import javax.inject.Singleton
 
 @Module
 @Suppress("unused")
-object NetworkModule{
+object NetworkModule {
 
     @Provides
     @Singleton

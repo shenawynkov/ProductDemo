@@ -1,7 +1,7 @@
 package com.shenawynkov.productsdemo.viewModel
 
-import androidx.lifecycle.ViewModel
 import android.app.Application
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 

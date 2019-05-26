@@ -9,11 +9,13 @@ import kotlinx.android.parcel.Parcelize
 
 @Entity(tableName = "products")
 @Parcelize
-data class Products(@SerializedName("id")
-                    @PrimaryKey
-                    val id : Int,
-                    @SerializedName("name") val name : String,
-                    @SerializedName("productDescription") val productDescription : String,
-                    @Embedded
-                    @SerializedName("image") val image : Image,
-                    @SerializedName("price") val price : Int) : Parcelable
+data class Products(
+    @SerializedName("id")
+    @PrimaryKey
+    val id: Int,
+    @SerializedName("name") val name: String,
+    @SerializedName("productDescription") val productDescription: String,
+    @Embedded
+    @SerializedName("image") val image: Image,
+    @SerializedName("price") val price: Int
+) : Parcelable
