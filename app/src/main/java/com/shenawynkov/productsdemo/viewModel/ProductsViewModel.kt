@@ -3,6 +3,7 @@ package com.shenawynkov.productsdemo.viewModel
 import android.app.Application
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -21,7 +22,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class ProductsViewModel(application: Application) : ViewModel() {
+class ProductsViewModel(var application: Application) : ViewModel() {
     @Inject
         lateinit var repository: Repository
     @Inject
@@ -47,10 +48,12 @@ class ProductsViewModel(application: Application) : ViewModel() {
     }
     private fun loadProduts ()
     {
-        Log.v("listSize0","listSize0")
 
-          list=DB.products().getAll()
-
+          list=repository.list
+                if(list.value?.size!=null&& list.value?.size!! >0)
+                {
+                       loading.value=View.INVISIBLE
+                }
             subscription = productApi.getProducts().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).doOnSubscribe({ onRetrieveProductListStarted() })
                 .doOnTerminate({ onRetrieveProductListEnded() })
@@ -61,6 +64,7 @@ class ProductsViewModel(application: Application) : ViewModel() {
     }
     private fun onRetrieveProductListSuccess(response: Response){
         repository.populate(response.data)
+
                  Log.v("response_success1 ","response_success1 ");
 
     }private fun onRetrieveProductListStarted(){
@@ -72,7 +76,7 @@ class ProductsViewModel(application: Application) : ViewModel() {
 
     private fun onRetrieveProductListError(error: Throwable){
         Log.v("response_success1 ",error.localizedMessage);
-
+        Toast.makeText(application,"There is no internet Connection",Toast.LENGTH_LONG).show()
 
     }
 

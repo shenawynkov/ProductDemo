@@ -44,7 +44,7 @@ class ProductActivity : AppCompatActivity() ,ProductListener{
         viewModel.loading.observe(this, Observer {
             progressBar.visibility=it
         })
-            recyclerView
+            
 
 
     }

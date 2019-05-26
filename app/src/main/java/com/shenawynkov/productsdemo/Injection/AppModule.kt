@@ -10,6 +10,7 @@ import com.shenawynkov.productsdemo.model.db.ProductDao
 import com.shenawynkov.productsdemo.utils.db
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
 import javax.inject.Singleton
 @Module
 class AppModule(private val application: Application)
@@ -28,7 +29,8 @@ class AppModule(private val application: Application)
 
 
     @Provides
-    @Singleton
+    @Reusable
+
     fun provideProductDao(
         database: AppDb): ProductDao=database.products()
 
